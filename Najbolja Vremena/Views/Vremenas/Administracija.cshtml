@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Najbolja_Vremena.Models.Vremena>
+@{
+    ViewData["Title"] = "Administracija";
+}
+
+<div class="text-center">
+    <h2 class="display-4" style="margin-bottom:10px;">Na ovome mjestu mozete odbiti ili prihvatiti nova vremena.</h2>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vrijeme)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (!item.Potvrdeno)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prezime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vrijeme)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Prihvati</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id">Odbaci</a>
+                    </td>
+                </tr>
+            }
+
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Najbolja_Vremena.Models.Vremena>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+
+@{
+    ViewData["Title"] = "Početna";
+}
+
+<div class="text-center">
+    <h2 class="display-4" style="margin-bottom:10px;">Dobrodošli, ovo su trenutna najbolja vremena trčanja do Mjeseca!</h2>
+</div>
+
+<div>
+    <a asp-action="Create" type="button" class="btn btn-info" style="margin-bottom:10px;">Unesi novo vrijeme</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vrijeme)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            if (item.Potvrdeno)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Prezime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Vrijeme)
+                    </td>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>
+                    }
+                </tr>
+            }
+        }
+    </tbody>
+</table>

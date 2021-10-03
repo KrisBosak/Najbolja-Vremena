@@ -1,0 +1,36 @@
+﻿@model Najbolja_Vremena.Models.Vremena
+
+@{
+    ViewData["Title"] = "Brisanje";
+}
+
+<h3>Jeste li sigurno da zelite ponistiti ovaj unos?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Prezime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Prezime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Vrijeme)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Vrijeme)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Obrisi" class="btn btn-danger" /> |
+        <a asp-action="Administracija">Vrati se nazad</a>
+    </form>
+</div>

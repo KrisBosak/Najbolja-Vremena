@@ -1,0 +1,41 @@
+﻿@model Najbolja_Vremena.Models.Vremena
+
+@{
+    ViewData["Title"] = "Potvrda";
+}
+
+<h3>Jeste li sigurno da zelite prihvatiti ovaj unos?</h3>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" readonly />
+            <input type="hidden" asp-for="Potvrdeno" readonly />
+            <div class="form-group">
+                <label asp-for="Ime" class="control-label"></label>
+                <input asp-for="Ime" class="form-control" readonly />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prezime" class="control-label"></label>
+                <input asp-for="Prezime" class="form-control" readonly />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Vrijeme" class="control-label"></label>
+                <input asp-for="Vrijeme" class="form-control" readonly />
+                <span asp-validation-for="Vrijeme" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Prihvati" class="btn btn-info" /> |
+                <a asp-action="Administracija">Vrati se nazad</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -63,7 +63,7 @@ namespace Najbolja_Vremena
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Vremena}/{action=Index}/{id?}");
+                    pattern: "{controller=Vremenas}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }
