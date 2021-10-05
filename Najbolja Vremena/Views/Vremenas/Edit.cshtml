@@ -4,14 +4,14 @@
     ViewData["Title"] = "Potvrda";
 }
 
-<h3>Jeste li sigurno da zelite prihvatiti ovaj unos?</h3>
+<h3>Jeste li sigurno da želite prihvatiti ovaj unos?</h3>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" readonly />
-            <input type="hidden" asp-for="Potvrdeno" readonly />
+            <input type="hidden" asp-for="Potvrdeno" value="true" readonly/>
             <div class="form-group">
                 <label asp-for="Ime" class="control-label"></label>
                 <input asp-for="Ime" class="form-control" readonly />
@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Prihvati" class="btn btn-info" /> |
+                <input type="submit" value="Prihvati" class="btn btn-info" />
                 <a asp-action="Administracija">Vrati se nazad</a>
             </div>
         </form>

@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Najbolja_Vremena.Data;
 using Najbolja_Vremena.Models;
 
+
 namespace Najbolja_Vremena.Controllers
 {
     public class VremenasController : Controller
@@ -21,9 +22,21 @@ namespace Najbolja_Vremena.Controllers
         }
 
         // GET: Vremenas
-        public async Task<IActionResult> Index()
+        /*public async Task<IActionResult> Index()
         {
-            return View(await _context.Vremena.ToListAsync());
+            var vremena = _context.Vremena.AsQueryable();
+            vremena = vremena.OrderBy(a => a.Vrijeme);
+
+            return View(vremena);
+        }*/
+
+        public IActionResult Index()
+        {
+            var vremena = _context.Vremena.AsQueryable();
+            
+            vremena = vremena.OrderBy(v => v.Vrijeme.TimeOfDay);
+
+            return View(vremena);
         }
 
         [Authorize]
@@ -67,10 +80,6 @@ namespace Najbolja_Vremena.Controllers
             if (vremena == null)
             {
                 return NotFound();
-            }
-            else
-            {
-                vremena.Potvrdeno = true;
             }
             return View(vremena);
         }
@@ -139,7 +148,7 @@ namespace Najbolja_Vremena.Controllers
             var vremena = await _context.Vremena.FindAsync(id);
             _context.Vremena.Remove(vremena);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Administracija));
         }
 
         private bool VremenaExists(int id)

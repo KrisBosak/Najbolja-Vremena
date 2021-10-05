@@ -14,14 +14,8 @@ namespace Najbolja_Vremena.Models
         public string Prezime { get; set; }
         public bool Potvrdeno { get; set; }
 
-        [Display(Name = "Vrijeme")]
         [DataType(DataType.Time)]
-        [DisplayFormat(DataFormatString = "{0:HH:mm:ss}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm:ss}")]
         public DateTime Vrijeme { get; set; }
-
-        public Vremena()
-        {
-            
-        }
     }
 }

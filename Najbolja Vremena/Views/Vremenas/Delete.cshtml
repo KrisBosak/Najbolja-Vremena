@@ -4,7 +4,7 @@
     ViewData["Title"] = "Brisanje";
 }
 
-<h3>Jeste li sigurno da zelite ponistiti ovaj unos?</h3>
+<h3>Jeste li sigurni da želite poništiti ovaj unos?</h3>
 <div>
     <hr />
     <dl class="row">
@@ -30,7 +30,7 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Obrisi" class="btn btn-danger" /> |
-        <a asp-action="Administracija">Vrati se nazad</a>
+        <input type="submit" value="Obrisi" class="btn btn-danger" />
+        <a href='javascript:history.go(-1)'>Vrati se nazad</a>
     </form>
 </div>
