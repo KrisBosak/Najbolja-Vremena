@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Najbolja_Vremena.Data;
 using Najbolja_Vremena.Models;
@@ -22,14 +21,6 @@ namespace Najbolja_Vremena.Controllers
         }
 
         // GET: Vremenas
-        /*public async Task<IActionResult> Index()
-        {
-            var vremena = _context.Vremena.AsQueryable();
-            vremena = vremena.OrderBy(a => a.Vrijeme);
-
-            return View(vremena);
-        }*/
-
         public IActionResult Index()
         {
             var vremena = _context.Vremena.AsQueryable();
@@ -148,7 +139,7 @@ namespace Najbolja_Vremena.Controllers
             var vremena = await _context.Vremena.FindAsync(id);
             _context.Vremena.Remove(vremena);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Administracija));
+            return RedirectToAction(nameof(Index));
         }
 
         private bool VremenaExists(int id)

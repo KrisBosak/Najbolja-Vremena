@@ -7,7 +7,7 @@
 }
 
 <div class="text-center">
-    <h2 class="display-4" style="margin-bottom:10px;">Dobrodošli, ovo su trenutna najbolja vremena trčanja do Mjeseca!</h2>
+    <h2 class="display-4" style="margin-bottom:10px;">Dobrodošli, ovo su trenutno najbolja vremena trčanja do Mjeseca!</h2>
 </div>
 
 <div>
@@ -33,23 +33,23 @@
         {
             if (item.Potvrdeno)
             {
-                <tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vrijeme)
+                </td>
+                @if (SignInManager.IsSignedIn(User))
+                {
                     <td>
-                        @Html.DisplayFor(modelItem => item.Ime)
+                        <a asp-action="Delete" asp-route-id="@item.Id">Izbriši</a>
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Prezime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Vrijeme)
-                    </td>
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        <td>
-                            <a asp-action="Delete" asp-route-id="@item.Id">Izbriši</a>
-                        </td>
-                    }
-                </tr>
+                }
+            </tr>
             }
         }
     </tbody>

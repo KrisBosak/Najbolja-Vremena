@@ -16,7 +16,7 @@ namespace Najbolja_Vremena.Data.Migrations
                     Ime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Prezime = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Potvrdeno = table.Column<bool>(type: "bit", nullable: false),
-                    Vrijeme = table.Column<DateTime>(type: "time", nullable: false)
+                    Vrijeme = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
